@@ -10,19 +10,19 @@ variable "cluster_name" {
   description = "Cluster name"
 }
 
-variable "cluster_region" {
+variable "region" {
   type        = string
   default     = "nyc1"
   description = "Cluster region"
 }
 
-variable "cluster_version" {
+variable "kubernetes_version" {
   type        = string
-  default     = "1.16.6-do.0"
-  description = "Cluster version"
+  default     = "1.16.8-do.0"
+  description = "DO Kubernetes version"
 }
 
-variable "cluster_tags" {
+variable "tags" {
   type        = list(string)
   default     = []
   description = "Cluster tags"
@@ -35,38 +35,44 @@ variable "kubeconfig_path" {
 }
 
 # Node pool vars
-variable "node_pool_name" {
+variable "node_name" {
   type        = string
   default     = "autoscale-pool-01"
-  description = "Node pool name"
+  description = "Node name"
 }
 
-variable "node_pool_size" {
+variable "node_size" {
   type        = string
   default     = "s-1vcpu-2gb"
-  description = "Node pool size"
+  description = "Node size"
 }
 
-variable "node_pool_auto_scale" {
+variable "node_autoscale" {
   type        = bool
   default     = true
-  description = "Node pool auto scale"
+  description = "Node auto scale"
 }
 
-variable "node_pool_min_nodes" {
+variable "node_min" {
   type        = number
   default     = 2
-  description = "Node pool min nodes"
+  description = "Min nodes"
 }
 
-variable "node_pool_max_nodes" {
+variable "node_max" {
   type        = number
   default     = 3
-  description = "Node pool auto max nodes"
+  description = "Max nodes"
 }
 
-variable "node_pool_tags" {
+variable "node_tags" {
   type        = list(string)
   default     = []
-  description = "Node pool tags"
+  description = "Node tags"
+}
+
+variable "node_count" {
+  type        = number
+  default     = 1
+  description = "Node count"
 }

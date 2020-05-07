@@ -1,15 +1,17 @@
-resource "digitalocean_kubernetes_cluster" "cluster" {
+resource "digitalocean_kubernetes_cluster" "master" {
   name    = var.cluster_name
-  region  = var.cluster_region
-  version = var.cluster_version
-  tags    = var.cluster_tags
+  region  = var.region
+
+  version = var.kubernetes_version
+  tags    = var.tags
 
   node_pool {
-    name       = var.node_pool_name
-    size       = var.node_pool_size
-    auto_scale = var.node_pool_auto_scale
-    min_nodes  = var.node_pool_min_nodes
-    max_nodes  = var.node_pool_max_nodes
-    tags       = var.node_pool_tags
+    name       = var.node_name
+    size       = var.node_size
+    auto_scale = var.node_autoscale
+    min_nodes  = var.node_min
+    max_nodes  = var.node_max
+    node_count = var.node_count
+    tags       = var.node_tags
   }
 }
