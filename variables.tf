@@ -76,3 +76,10 @@ variable "node_count" {
   default     = 1
   description = "Node count"
 }
+
+# VPC vars
+variable "vpc_ip_range" {
+  type        = string
+  default     = "10.10.0.0/16"
+  description = "The range of IP addresses for the VPC in CIDR notation"
+}

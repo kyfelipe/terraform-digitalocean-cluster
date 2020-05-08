@@ -1,6 +1,7 @@
 resource "digitalocean_kubernetes_cluster" "master" {
   name    = var.cluster_name
   region  = var.region
+  vpc_uuid = digitalocean_vpc.cluster.id
 
   version = var.kubernetes_version
   tags    = var.tags
