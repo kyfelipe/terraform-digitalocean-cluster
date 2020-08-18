@@ -33,4 +33,7 @@ override.tf.json
 terraform.rc
 
 # IDEA
-.idea
+.idea/
+
+# VSCODE
+.vscode/

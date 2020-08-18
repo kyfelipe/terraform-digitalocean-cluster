@@ -7,7 +7,7 @@ variable "token" {
 # Cluster vars
 variable "cluster_name" {
   type        = string
-  description = "Cluster name"
+  description = " A name for the Kubernetes cluster."
 }
 
 variable "region" {
@@ -16,10 +16,22 @@ variable "region" {
   description = "Cluster region"
 }
 
-variable "kubernetes_version" {
+variable "auto_upgrade" {
+  type        = bool
+  default     = false
+  description = "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window."
+}
+
+variable "surge_upgrade" {
+  type        = bool
+  default     = false
+  description = "Cluster region"
+}
+
+variable "k8s_version_prefix" {
   type        = string
-  default     = "1.16.8-do.0"
-  description = "DO Kubernetes version"
+  default     = "1.18."
+  description = "DO Kubernetes version prefix"
 }
 
 variable "tags" {
@@ -43,8 +55,8 @@ variable "node_name" {
 
 variable "node_size" {
   type        = string
-  default     = "s-1vcpu-2gb"
-  description = "Node size"
+  default     = "s-2vcpu-2gb"
+  description = "The slug identifier for the type of Droplet to be used as workers in the node pool."
 }
 
 variable "node_autoscale" {
@@ -80,6 +92,6 @@ variable "node_count" {
 # VPC vars
 variable "vpc_ip_range" {
   type        = string
-  default     = "10.10.0.0/16"
+  default     = "10.20.0.0/16"
   description = "The range of IP addresses for the VPC in CIDR notation"
 }

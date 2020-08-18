@@ -1,9 +1,16 @@
+data "digitalocean_kubernetes_versions" "cluster" {
+  version_prefix = var.k8s_version_prefix
+}
+
 resource "digitalocean_kubernetes_cluster" "master" {
-  name    = var.cluster_name
-  region  = var.region
+  name     = var.cluster_name
+  region   = var.region
   vpc_uuid = digitalocean_vpc.cluster.id
 
-  version = var.kubernetes_version
+  auto_upgrade  = var.auto_upgrade
+  surge_upgrade = var.surge_upgrade
+
+  version = data.digitalocean_kubernetes_versions.cluster.latest_version
   tags    = var.tags
 
   node_pool {
@@ -15,4 +22,6 @@ resource "digitalocean_kubernetes_cluster" "master" {
     node_count = var.node_count
     tags       = var.node_tags
   }
+
+  depends_on = [digitalocean_vpc.cluster]
 }
