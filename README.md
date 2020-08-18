@@ -4,7 +4,7 @@ Exemplo de main.tf para uso do módulo
 variable "token" {}
 
 module "do_kubernetes_cluster" {
-  source       = "kyfelipe/digitalocean/cluster"
+  source       = "kyfelipe/cluster/digitalocean"
   version      = "0.1.1"
   token        = var.token
   cluster_name = "cluster-name"
